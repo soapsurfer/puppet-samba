@@ -56,20 +56,20 @@ class samba::params(
           $cleanup                = undef
           $packagesambadc         = 'samba'
           $packagesambaclassic    = 'samba'
-          $packagesambawinbind    = 'libwbclient'
-          $packagesambansswinbind = 'libnss-winbind'
-          $packagesambapamwinbind = 'libpam-winbind'
+          $packagesambawinbind    = 'samba'
+          $packagesambansswinbind = 'smbclient'
+          $packagesambapamwinbind = 'samba'
           $packagesambaclient     = 'smbclient'
           $servivesambadc         = 'samba'
-          $servivesmb             = 'smbd'
-          $servivewinbind         = 'winbindd'
+          $servivesmb             = 'smb'
+          $servivewinbind         = 'winbind'
           $sambacmd               = '/usr/bin/samba-tool'
           $sambaclientcmd         = '/usr/bin/smbclient'
           $sambaoptsfile          = '/etc/default/samba4'
           $sambaoptstmpl          = "${module_name}/debian-samba.erb"
           $smbconffile            = '/etc/samba/smb.conf'
           $krbconffile            = '/etc/krb5.conf'
-          $packagepyyaml          = 'python2-yaml'
+          $packagepyyaml          = 'python-yaml'
       }
       default: {
           fail('unsupported os')
