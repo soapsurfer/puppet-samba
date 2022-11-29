@@ -68,7 +68,7 @@ class samba::classic(
     fail('realm must be a valid domain')
   }
 
-  validate_slength($smbname, 15)
+  validate_legacy(String, 'validate_slength', $smbname, 15)
   unless is_domain_name("${smbname}.${realm}"){
     fail('smbname must be a valid domain')
   }
