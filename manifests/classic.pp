@@ -60,18 +60,19 @@ class samba::classic(
 ) inherits samba::params{
 
 
-  unless is_domain_name($realm){
-    fail('realm must be a valid domain')
-  }
-
-  unless is_domain_name($realm){
-    fail('realm must be a valid domain')
-  }
-
-  validate_legacy(String, 'validate_slength', $smbname, 15)
-  unless is_domain_name("${smbname}.${realm}"){
-    fail('smbname must be a valid domain')
-  }
+  # TODO: fix
+  # unless is_domain_name($realm){
+  #   fail('realm must be a valid domain')
+  # }
+  #
+  # unless is_domain_name($realm){
+  #   fail('realm must be a valid domain')
+  # }
+  #
+  # # validate_legacy(String, 'validate_slength', $smbname, 15)
+  # unless is_domain_name("${smbname}.${realm}"){
+  #   fail('smbname must be a valid domain')
+  # }
 
   if $strictrealm {
     $tmparr = split($realm, '[.]')
