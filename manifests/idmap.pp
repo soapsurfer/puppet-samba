@@ -63,7 +63,7 @@ define samba::idmap(
   $checkbackend = ['ad', 'autorid', 'hash', 'ldap', 'nss', 'rid', 'tdb2', 'tdb']
   $checkbackendstr = join($checkbackend, ', ')
 
-  unless member($checkbackend, downcase($backend)){
+  unless member($checkbackend, $backend.downcase){
     fail("role must be in [${checkbackendstr}]")
   }
 
@@ -93,7 +93,7 @@ define samba::idmap(
 
   $services = concat($s_tmp_1, $s_tmp_2, $s_tmp_3)
 
-  case downcase($backend) {
+  case $backend.downcase {
     'ad': {
       unless $schema_mode {
         fail("missing parameter(s) for idmap_${backend}, need: schema_mode")
@@ -167,7 +167,7 @@ echo '${ldap_passwd}' | sha1sum >${hash_ldap}",
     "${cp} range"   => "${idrangemin}-${idrangemax}",
   }
 
-  $idmapoptions = merge($idmap_base, $idmap_specific)
+  $idmapoptions = $idmap_base + $idmap_specific
 
   $idmapoptionsindex = prefix(keys($idmapoptions),
       '[global]')
